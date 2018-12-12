@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+.DS_Store
+.tmp
+.log
+.o
+.class
+.pyc
+
