@@ -6,4 +6,4 @@ node_modules/
 .o
 .class
 .pyc
-
+credentials.js
