@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const credentials = require('./credentials');
 const express = require('express');
 const user = require('./models/User');
 const bodyParser = require('body-parser');
@@ -7,8 +6,14 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 5000;
 
+
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv");
+  dotenv.config();
+}
+
 // Database
-mongoose.connect(credentials.mongoDBLogin, { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_LOGIN, { useNewUrlParser: true });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
