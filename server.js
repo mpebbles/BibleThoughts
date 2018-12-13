@@ -6,28 +6,19 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database
 mongoose.connect(credentials.mongoDBLogin, { useNewUrlParser: true });
 
-// API calls
-app.get('/api/hello', (req, res) => {
-  // put test doc into Database
-  new user({
-    phrase: "test",
-    pin: 1234,
-  }).save();
-  res.send({ express: 'Hello From Express' });
-});
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// parse application/json
+app.use(bodyParser.json());
+
+// API calls
+const apiRouter = require("./api.js");
+app.use("/api", apiRouter);
 
 
 if (process.env.NODE_ENV === 'production') {
