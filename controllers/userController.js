@@ -33,7 +33,7 @@ exports.createAccount = [
             if (err) {
               console.log(err);
             }
-            res.send(200);
+            res.sendStatus(200);
           });
         } else {
           // account already exists

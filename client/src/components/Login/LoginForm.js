@@ -13,6 +13,14 @@ class LoginForm extends Component {
   }
 
   loginHandler() {
+    if(this.state.phrase.length < 5) {
+      // TODO: tell user issue
+      return;
+    }
+    if(!this.state.pin.length) {
+      // TODO: tell user issue
+      return;
+    }
     axios({
       method: "post",
       url: "/api/login/",
