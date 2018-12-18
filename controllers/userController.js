@@ -26,12 +26,20 @@ exports.login = [
 exports.logout = [
   (req, res, next) => {
     req.session.val = "";
+    res.sendStatus(200);
   }
 ];
 
 exports.deleteAccount = [
   (req, res, next) => {
-    // TODO: implement
+    try {
+      user.deleteOne({ _id: req.session.val }).exec();
+      req.session.val = "";
+      res.sendStatus(200);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
   }
 ];
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Home from './components/Home';
+import Profile from './components/Profile';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 const routing = (
@@ -10,6 +11,7 @@ const routing = (
     <div>
       <Route exact path="/" component={App} />
       <Route path="/home" component={Home} />
+      <Route path="/profile" component={Profile} />
     </div>
   </Router>
 )

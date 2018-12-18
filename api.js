@@ -31,4 +31,8 @@ router.post(
   user.createAccount
 );
 
+
+router.post("/logout", [],user.logout);
+router.post("/deleteAccount", [], user.deleteAccount);
+
 module.exports = router;
