@@ -17,7 +17,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log();
     return (
       <div className="center-box">
         {this.state.showLogin ? <LoginForm /> : <CreateAccountForm />}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "../../css/bootstrap.min.css";
 import "../../css/login.css";
@@ -8,17 +9,14 @@ class LoginForm extends Component {
     super();
     this.state = {
       phrase: "",
-      pin: ""
+      pin: "",
+      invalid: false
     };
   }
 
   loginHandler() {
-    if(this.state.phrase.length < 5) {
-      // TODO: tell user issue
-      return;
-    }
-    if(!this.state.pin.length) {
-      // TODO: tell user issue
+    if(this.state.phrase.length < 5 || !this.state.pin.length) {
+      this.setState({invalid: true});
       return;
     }
     axios({
@@ -29,8 +27,10 @@ class LoginForm extends Component {
       .then(res => {
         if(res.status===200) {
           // User is logged in
-          // TODO: implement unique ID
+          this.props.history.push("/home");
         }
+        else
+          this.setState({invalid: true});
       })
       .catch(err => {
         console.log(err);
@@ -59,6 +59,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form>
+        {this.state.invalid ? <p style={{color:"red",size:"2em", float: "left"}}>Invalid phrase or PIN</p> : null }
         <div className="form-group">
           <label>Identification Phrase</label>
           <input
@@ -95,4 +96,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

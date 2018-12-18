@@ -1,5 +1,9 @@
 const user = require("../models/User");
 
+function setSessionVal(req, docId) {
+  req.session.val = docId;
+}
+
 exports.login = [
   (req, res, next) => {
     user
@@ -9,11 +13,25 @@ exports.login = [
       })
       .exec(function(err, document) {
         // TODO: return unique identifier
-        if (document) res.sendStatus(200);
-        else {
+        if (document) {
+          setSessionVal(req, document._id);
+          res.sendStatus(200);
+        } else {
           res.sendStatus(400);
         }
       });
+  }
+];
+
+exports.logout = [
+  (req, res, next) => {
+    req.session.val = "";
+  }
+];
+
+exports.deleteAccount = [
+  (req, res, next) => {
+    // TODO: implement
   }
 ];
 
@@ -33,6 +51,7 @@ exports.createAccount = [
             if (err) {
               console.log(err);
             }
+            setSessionVal(req, document._id);
             res.sendStatus(200);
           });
         } else {
