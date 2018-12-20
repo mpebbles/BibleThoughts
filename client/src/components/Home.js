@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Control from "./Control";
-import ResourceContainer from "../containers/ResourceContainer";
 import "../css/main.css";
-
+import ResourceComponent from "./ResourceComponent";
 
 class Home extends Component {
 
@@ -10,7 +9,7 @@ class Home extends Component {
     return (
       <div className="main">
         <Control />
-        <ResourceContainer />
+        <ResourceComponent />
       </div>
     );
   }

@@ -8,8 +8,8 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers/reducers";
-import { fetchResources } from './actions/actions';
-import thunkMiddleware from 'redux-thunk';
+import { fetchResources } from "./actions/actions";
+import thunkMiddleware from "redux-thunk";
 
 const routing = (
   <Router>
@@ -21,10 +21,12 @@ const routing = (
   </Router>
 );
 
-const store = createStore(rootReducer,
+const store = createStore(
+  rootReducer,
   applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-  ));
+    thunkMiddleware // lets us dispatch() functions
+  )
+);
 
 store.dispatch(fetchResources());
 

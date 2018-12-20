@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 import "../css/login.css";
 import CreateAccountForm from "./Login/CreateAccountForm";
 import LoginForm from "./Login/LoginForm";
@@ -9,6 +11,21 @@ class Login extends Component {
     this.state = {
       showLogin: true
     };
+  }
+
+  componentWillMount() {
+    try {
+      axios({
+        method: "get",
+        url: "/api/isLoggedIn/"
+      }).then(res => {
+        if (res.status === 200) {
+          this.props.history.push("/home");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   handleNeedAccount(event) {
@@ -41,4 +58,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

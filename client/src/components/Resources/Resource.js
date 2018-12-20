@@ -7,7 +7,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
 
 const Resource = ({ onDeleteClick, link, text }) => (
-  <span className="badge badge-primary">
+  <span className="badge badge-primary pill-link-wrapper">
     <span
       className="pill-link"
       // Open link in new tab on click
@@ -19,7 +19,7 @@ const Resource = ({ onDeleteClick, link, text }) => (
       className="no-background-btn"
       icon="times"
       size="1x"
-      title="profile"
+      title="remove"
       color="white"
       onClick={onDeleteClick}
     />

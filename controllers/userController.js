@@ -69,3 +69,57 @@ exports.createAccount = [
       });
   }
 ];
+
+exports.addResource = [
+  (req, res, next) => {
+    user
+      .findOneAndUpdate(
+        { _id: req.session.val },
+        { $push: { resources: { link: req.body.link, text: req.body.text } } }
+      )
+      .exec(function(err, document) {
+        if (!document) {
+          res.sendStatus(400);
+          return;
+        }
+        res.sendStatus(200);
+      });
+  }
+];
+
+exports.deleteResource = [
+  (req, res, next) => {
+    user
+      .findOneAndUpdate(
+        { _id: req.session.val },
+        { $pull: { resources: { link: req.body.link } } }
+      )
+      .exec(function(err, document) {
+        if (!document) {
+          res.sendStatus(400);
+          return;
+        }
+        res.sendStatus(200);
+      });
+  }
+];
+
+exports.getResources = function(req, res, next) {
+  user.findOne({ _id: req.session.val }).exec(function(err, document) {
+    if (!document) {
+      res.sendStatus(400);
+      return;
+    }
+    res.send(JSON.stringify(document.resources));
+  });
+};
+
+exports.isLoggedIn = function(req, res, next) {
+  user.findOne({ _id: req.session.val }).exec(function(err, document) {
+    if (!document) {
+      res.sendStatus(400);
+      return;
+    }
+    res.sendStatus(200);
+  });
+};
