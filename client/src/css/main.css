@@ -36,3 +36,7 @@
   padding: 7%;
   border-radius: 15px;
 }
+
+.pill-link {
+  cursor: pointer;
+}

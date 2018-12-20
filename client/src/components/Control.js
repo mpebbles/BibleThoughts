@@ -18,7 +18,7 @@ class Control extends Component {
         <FontAwesomeIcon
           className="no-background-btn"
           icon="home"
-          size="1.5x"
+          size="1x"
           title="profile"
           color="white"
           onClick={this.navigate.bind(this, "/home")}
@@ -27,7 +27,7 @@ class Control extends Component {
         <FontAwesomeIcon
           className="no-background-btn"
           icon="user"
-          size="1.5x"
+          size="1x"
           title="profile"
           color="white"
           onClick={this.navigate.bind(this, "/profile")}
