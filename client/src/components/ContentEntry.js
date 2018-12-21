@@ -35,8 +35,7 @@ class ContentEntry extends Component {
     this.setState({ showForm: !this.state.showForm });
   }
 
-  handleAddResource() {
-    this.addClickHandler();
+  handleAddTag() {
     var tempTags = this.state.tags;
     tempTags.push({ tag: this.state.tagField, id: this.state.tags.length });
     this.setState({ tagField: "", tags: tempTags });
@@ -117,7 +116,7 @@ class ContentEntry extends Component {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={this.handleAddResource.bind(this)}
+                  onClick={this.handleAddTag.bind(this)}
                 >
                   Create Tag
                 </button>

@@ -1,20 +1,44 @@
 #resource-component {
-  margin-top: 2%;
   width: 50%;
-  margin-left: 10%;
+  position: fixed;
+  top: 10px;
+  left: 10px;
   background:rgba(100,100,100,0.7);
   padding: 3%;
   border-radius: 15px;
   float: left;
+  overflow: hidden;
+  z-index: 2;
 }
 
 #content-entry {
-  width: 50%;
-  margin-top: 5%;
+  width: 30%;
   background:rgba(100,100,100,0.7);
   padding: 3%;
   border-radius: 15px;
-  float: left;
+  position: fixed;
+  right: 10px;
+  top: 160px;
+}
+
+#entries {
+  width: 60%;
+  position: fixed;
+  top: 160px;
+  left: 10px;
+  background:rgba(100,100,100,0.7);
+  padding: 3%;
+  border-radius: 15px;
+  z-index: 1;
+  height: 70vh;
+  overflow: hidden;
+}
+
+#entries-child {
+  height: 100%;
+  margin-right: -70px; /* maximum width of scrollbar */
+  padding-right: 70px; /* maximum width of scrollbar */
+  overflow-y: scroll;
 }
 
 .left-heading {

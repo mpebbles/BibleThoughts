@@ -5,6 +5,7 @@ import ResourceComponent from "./ResourceComponent";
 import ContentEntry from "./ContentEntry";
 import { fetchResources } from "../actions/actions";
 import { connect } from "react-redux";
+import Entries from "./Entries";
 
 let createHandler = function(dispatch) {
   let fetchResourcesFunc = function() {
@@ -35,6 +36,7 @@ class Home extends Component {
         <Control />
         <ResourceComponent />
         <ContentEntry />
+        <Entries />
       </div>
     );
   }
