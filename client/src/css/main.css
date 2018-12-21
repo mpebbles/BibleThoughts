@@ -8,6 +8,20 @@
   float: left;
 }
 
+#content-entry {
+  width: 50%;
+  margin-top: 5%;
+  background:rgba(100,100,100,0.7);
+  padding: 3%;
+  border-radius: 15px;
+  float: left;
+}
+
+.left-heading {
+  float: left;
+  color: white;
+}
+
 .resource-container {
     padding: 1%;
 }

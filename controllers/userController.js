@@ -1,4 +1,5 @@
 const user = require("../models/User");
+const tagDoc = require("../models/Tags");
 
 function setSessionVal(req, docId) {
   req.session.val = docId;
@@ -123,3 +124,35 @@ exports.isLoggedIn = function(req, res, next) {
     res.sendStatus(200);
   });
 };
+
+exports.addContent = [
+  (req, res, next) => {
+    user
+      .findOneAndUpdate(
+        { _id: req.session.val },
+        { $push: { content: { text: req.body.text } } },
+        { new: true } // to get updated document
+      )
+      .exec(function(err, document) {
+        if (!document) {
+          res.sendStatus(400);
+          return;
+        }
+
+        // insert tags into DB
+        req.body.tags.map(tag => {
+          new tagDoc({
+            tag: tag.tag,
+            userRef: document._id,
+            contentRef: document.content[document.content.length - 1]._id
+          }).save(function(err, doc) {
+            if (err) {
+              console.log(err);
+            }
+          });
+        });
+
+        res.send(document.content[document.content.length - 1]._id);
+      });
+  }
+];

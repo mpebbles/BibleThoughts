@@ -3,7 +3,9 @@ import {
   DELETE_RESOURCE,
   REQUEST_RESOURCES,
   ADD_RESOURCE,
-  RECEIVE_RESOURCES
+  RECEIVE_RESOURCES,
+  ADDED_CONTENT,
+  ADDING_CONTENT,
 } from "../actions/actions";
 
 function resources(state = [], action) {
@@ -22,15 +24,32 @@ function resources(state = [], action) {
         text: action.text,
         link: action.link
       });
-
       return obj;
     default:
       return state;
   }
 }
 
+function content(state = [], action) {
+  switch (action.type) {
+    case ADDED_CONTENT:
+      var obj = Object.assign([], state);
+      obj.push({
+        text: action.text,
+        tags: action.tags,
+        id: action.id,
+      });
+      return obj;
+    case ADDING_CONTENT:
+      return state;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  resources
+  resources,
+  content
 });
 
 export default rootReducer;

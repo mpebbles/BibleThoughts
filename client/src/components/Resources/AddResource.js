@@ -58,7 +58,7 @@ class AddResource extends Component {
                 className="form-control"
                 aria-describedby="URLHelp"
                 maxLength="500"
-                placeholder="Enter the URL"
+                placeholder="Paste the URL here"
                 onChange={e => {
                   this.setState({ formURL: e.target.value });
                 }}

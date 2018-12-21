@@ -7,6 +7,8 @@ export const DELETE_RESOURCE = "DELETE_RESOURCE";
 export const RECEIVE_RESOURCES = "RECEIVE_RESOURCES";
 export const ADD_RESOURCE = "ADD_RESOURCE";
 export const REQUEST_RESOURCES = "REQUEST_RESOURCES";
+export const ADDED_CONTENT = "ADDED_CONTENT";
+export const ADDING_CONTENT = "ADDING_CONTENT";
 
 /*
  * other constants
@@ -34,9 +36,39 @@ export function addResource(link, text) {
   return { type: ADD_RESOURCE, link: link, text: text };
 }
 
+export function addContent(text, tags) {
+  return function(dispatch) {
+    dispatch(addingContent);
+    return axios({
+      method: "post",
+      url: "/api/addContent/",
+      data: { text: text, tags: tags }
+    }).then(res => {
+      if (res.status === 200) {
+        dispatch(addedContent(text, tags, res.data));
+      }
+    });
+  };
+}
+
 export function requestResources() {
   return {
     type: REQUEST_RESOURCES
+  };
+}
+
+export function addingContent() {
+  return {
+    type: ADDING_CONTENT
+  };
+}
+
+export function addedContent(text, tags, id) {
+  return {
+    type: ADDED_CONTENT,
+    text: text,
+    tags: tags,
+    id: id
   };
 }
 

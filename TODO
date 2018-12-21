@@ -1,18 +1,12 @@
 Early TODOs
 ***********
 
-
 landing page
-link to bible versions
-handle if user already logged in
 icon
-
 add limits to entries in database, sanitize
-
+re-design tag portion of database if application ever needs to scale
 
 
 ****
-external links(configurable)
-commentary
-tags
 search
+my entries

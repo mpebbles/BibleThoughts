@@ -12,6 +12,12 @@ const User = new Schema({
       text: { type: String, maxLength: 50 },
       required: false
     }
+  ],
+  content: [
+    {
+      text: { type: String, maxLength: 1000, unique: true },
+      required: false
+    }
   ]
 });
 

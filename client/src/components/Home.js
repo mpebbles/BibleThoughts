@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Control from "./Control";
 import "../css/main.css";
 import ResourceComponent from "./ResourceComponent";
+import ContentEntry from "./ContentEntry";
 import { fetchResources } from "../actions/actions";
 import { connect } from "react-redux";
 
@@ -33,6 +34,7 @@ class Home extends Component {
       <div className="main">
         <Control />
         <ResourceComponent />
+        <ContentEntry />
       </div>
     );
   }
