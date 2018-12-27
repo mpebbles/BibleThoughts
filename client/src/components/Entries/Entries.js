@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Entry from "./Entry";
 
-const Entries = ({ entries, deleteEntry }) => (
+const Entries = ({ entries, deleteEntry}) => (
   <ul>
     {entries.map(entry => (
       <Entry

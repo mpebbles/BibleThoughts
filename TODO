@@ -1,11 +1,12 @@
 Early TODOs
 ***********
 
-Finish getting entries (styling, delete, view full entry)
+Cleanup
+Finish getting entries (styling, delete, view full entry, edit entry)
+add all client side updates (redux logic)
 pagination with content (using scroll detection to load more)
 add search entries
-add logic to add/remove on client side
-implement API calls for add/remove
+implement API calls for edit/remove
 
 
 
@@ -13,8 +14,3 @@ landing page
 icon
 add limits to entries in database, sanitize
 re-design tag portion of database if application ever needs to scale
-
-
-****
-search
-my entries

@@ -4,11 +4,11 @@ import Entries from '../components/Entries/Entries';
 
 
 const mapStateToProps = state => ({
-  entries: state.entries
+  entries: state.entries,
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteEntry: id => dispatch(deleteEntry(id))
+  deleteEntry: id => dispatch(deleteEntry(id)),
 })
 
 export default connect(
