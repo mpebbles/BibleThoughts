@@ -65,7 +65,7 @@ class ContentEntry extends Component {
           }}
           value={this.state.text}
           className="form-control"
-          rows="5"
+          rows="7"
         />
         <div style={{ marginTop: "2%" }}>
           <h5 className="left-heading">Tags</h5>
