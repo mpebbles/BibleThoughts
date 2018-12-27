@@ -15,7 +15,7 @@ const User = new Schema({
   ],
   content: [
     {
-      text: { type: String, maxLength: 1000, unique: true },
+      text: { type: String, maxLength: 15000, unique: true },
       required: false
     }
   ]
