@@ -5,6 +5,8 @@ import ResourceComponent from "./ResourceComponent";
 import ContentEntry from "./ContentEntry";
 import { fetchResources } from "../actions/actions";
 import { connect } from "react-redux";
+import EntriesContainer from "../containers/EntriesContainer.js";
+
 
 //let createHandler = function(dispatch) {
 //  let fetchResourcesFunc = function() {
@@ -16,7 +18,7 @@ import { connect } from "react-redux";
 //  };
 //};
 
-class Entries extends Component {
+class EntriesWrapper extends Component {
   //constructor(props) {
   //  super(props);
   //this.fetchResourcesFunc = createHandler(
@@ -40,43 +42,12 @@ class Entries extends Component {
   render() {
     return (
       <div onScroll={this.handleScroll} id="entries">
-      <div id="entries-child">
-        <ul>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-          <li>Entry 1</li>
-          <li>Entry 2</li>
-        </ul>
+        <div id="entries-child">
+          <EntriesContainer />
         </div>
       </div>
     );
   }
 }
 
-export default connect()(Entries);
+export default connect()(EntriesWrapper);

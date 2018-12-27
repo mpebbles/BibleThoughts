@@ -9,6 +9,9 @@ export const ADD_RESOURCE = "ADD_RESOURCE";
 export const REQUEST_RESOURCES = "REQUEST_RESOURCES";
 export const ADDED_CONTENT = "ADDED_CONTENT";
 export const ADDING_CONTENT = "ADDING_CONTENT";
+export const RECEIVE_ENTRIES = "RECEIVE_ENTRIES";
+export const REQUEST_ENTRIES = "REQUEST_ENTRIES";
+export const DELETE_ENTRY = "DELETE_ENTRY";
 
 /*
  * other constants
@@ -93,4 +96,42 @@ export function fetchResources() {
       }
     });
   };
+}
+
+export function receiveEntries(entries) {
+  return {
+    type: RECEIVE_ENTRIES,
+    entries: entries
+  };
+}
+
+export function requestEntries() {
+  return {
+    type: REQUEST_ENTRIES
+  };
+}
+
+export function fetchEntries() {
+  return function(dispatch) {
+    dispatch(requestResources);
+    return axios({
+      method: "get",
+      url: "/api/getEntries/"
+    }).then(res => {
+      if (res.status === 200) {
+        dispatch(receiveEntries(res.data));
+      } else {
+        dispatch(receiveEntries([]));
+      }
+    });
+  };
+}
+
+export function deleteEntry(id) {
+  //axios({
+  //  method: "post",
+  //  url: "/api/deleteResource/",
+  //  data: { link: link }
+  //}).then();
+  return { type: DELETE_ENTRY, id: id };
 }

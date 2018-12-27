@@ -3,31 +3,40 @@ import Control from "./Control";
 import "../css/main.css";
 import ResourceComponent from "./ResourceComponent";
 import ContentEntry from "./ContentEntry";
-import { fetchResources } from "../actions/actions";
+import { fetchResources, fetchEntries } from "../actions/actions";
 import { connect } from "react-redux";
-import Entries from "./Entries";
+import EntriesWrapper from "./EntriesWrapper";
 
 let createHandler = function(dispatch) {
   let fetchResourcesFunc = function() {
     dispatch(fetchResources());
   };
 
+  let fetchEntriesFunc = function() {
+    dispatch(fetchEntries());
+  };
+
   return {
-    fetchResourcesFunc
+    fetchResourcesFunc,
+    fetchEntriesFunc
   };
 };
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.fetchResourcesFunc = createHandler(
-      this.props.dispatch
-    ).fetchResourcesFunc;
+    //this.fetchResourcesFunc = createHandler(
+    //  this.props.dispatch
+    //).fetchResourcesFunc;
+    const handler = createHandler(this.props.dispatch);
+    this.fetchResourcesFunc = handler.fetchResourcesFunc;
+    this.fetchEntriesFunc = handler.fetchEntriesFunc;
   }
 
   componentWillMount() {
     // get resources from server
     this.fetchResourcesFunc();
+    this.fetchEntriesFunc();
   }
 
   render() {
@@ -36,7 +45,7 @@ class Home extends Component {
         <Control />
         <ResourceComponent />
         <ContentEntry />
-        <Entries />
+        <EntriesWrapper />
       </div>
     );
   }

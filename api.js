@@ -38,5 +38,6 @@ router.post("/addContent", [], user.addContent);
 router.post("/deleteResource", [], user.deleteResource);
 router.get("/getResources", user.getResources);
 router.get("/isLoggedIn", user.isLoggedIn);
+router.get("/getEntries", user.getEntries);
 
 module.exports = router;
