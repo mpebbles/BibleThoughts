@@ -6,36 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
 
-var toggle = false;
-
-//function showMore(id) {
-//  toggle = !toggle;
-//  console.log(id)
-//}
-
-//const Entry = ({ key, onDeleteClick, tags, content, showMore }) => (
-//  <li className="">
-//    {content}
-//    <FontAwesomeIcon
-//      className="no-background-btn"
-//      icon="caret-down"
-//      size="1x"
-//      title="remove"
-//      color="white"
-//      onClick={e => showMore(content)}
-
-//    />
-
-//    {tags.map(tag => (
-//      <span key={tag} className="badge badge-primary pill-link-wrapper">
-//        {tag}
-//      </span>
-//    ))}
-//  </li>
-//);
 function addElipses(text) {
-  if(text.length > 200)
-    return " ...";
+  if (text.length > 200) return " ...";
   return "";
 }
 
@@ -49,21 +21,31 @@ class Entry extends Component {
 
   render() {
     return (
-      <li style={{ color: "white", borderBottom:"1px solid gray"}} className="">
+      <li
+        style={{ color: "white", borderBottom: "1px solid gray" }}
+        className=""
+      >
         {!this.state.showFull ? (
-          <div style={{padding:"5px"}}>
+          <div style={{ padding: "5px" }}>
             <div
               style={{
                 textAlign: "left",
-                cursor: "pointer",
+                cursor: "pointer"
               }}
               onClick={e => {
                 this.setState({ showFull: !this.state.showFull });
               }}
             >
-              {this.props.content.substring(0, 200) + addElipses(this.props.content)}
+              {this.props.content.substring(0, 200) +
+                addElipses(this.props.content)}
             </div>
-            <div style={{ paddingBottom: "5%",display: "inline", marginLeft: "1px"}}>
+            <div
+              style={{
+                paddingBottom: "5%",
+                display: "inline",
+                marginLeft: "1px"
+              }}
+            >
               {this.props.tags.map(tag => (
                 <span
                   key={tag}
@@ -108,7 +90,13 @@ class Entry extends Component {
               }}
             >
               {this.props.content}
-              <div style={{ marginTop: "5%", float: "left" }}>
+              <div
+                style={{
+                  paddingBottom: "5%",
+                  display: "inline",
+                  marginLeft: "1px"
+                }}
+              >
                 {this.props.tags.map(tag => (
                   <span
                     key={tag}
