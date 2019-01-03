@@ -83,6 +83,7 @@ class Entry extends Component {
               style={{
                 marginTop: "5%",
                 height: "100%",
+                width: "110%",
                 marginRight: "-100px" /* maximum width of scrollbar */,
                 paddingRight: "100px" /* maximum width of scrollbar */,
                 overflowY: "scroll",

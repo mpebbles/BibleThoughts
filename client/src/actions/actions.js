@@ -7,7 +7,7 @@ export const DELETE_RESOURCE = "DELETE_RESOURCE";
 export const RECEIVE_RESOURCES = "RECEIVE_RESOURCES";
 export const ADD_RESOURCE = "ADD_RESOURCE";
 export const REQUEST_RESOURCES = "REQUEST_RESOURCES";
-export const ADDED_CONTENT = "ADDED_CONTENT";
+export const ADDED_ENTRY = "ADDED_ENTRY";
 export const ADDING_CONTENT = "ADDING_CONTENT";
 export const RECEIVE_ENTRIES = "RECEIVE_ENTRIES";
 export const REQUEST_ENTRIES = "REQUEST_ENTRIES";
@@ -68,7 +68,7 @@ export function addingContent() {
 
 export function addedContent(text, tags, id) {
   return {
-    type: ADDED_CONTENT,
+    type: ADDED_ENTRY,
     text: text,
     tags: tags,
     id: id

@@ -4,7 +4,7 @@ import {
   REQUEST_RESOURCES,
   ADD_RESOURCE,
   RECEIVE_RESOURCES,
-  ADDED_CONTENT,
+  ADDED_ENTRY,
   ADDING_CONTENT,
   RECEIVE_ENTRIES,
   REQUEST_ENTRIES,
@@ -33,23 +33,6 @@ function resources(state = [], action) {
   }
 }
 
-function content(state = [], action) {
-  switch (action.type) {
-    case ADDED_CONTENT:
-      var obj = Object.assign([], state);
-      obj.push({
-        text: action.text,
-        tags: action.tags,
-        id: action.id
-      });
-      return obj;
-    case ADDING_CONTENT:
-      return state;
-    default:
-      return state;
-  }
-}
-
 function entries(state = [], action) {
   switch (action.type) {
     case RECEIVE_ENTRIES:
@@ -68,6 +51,16 @@ function entries(state = [], action) {
       return state;
     case DELETE_ENTRY:
       return state;
+    case ADDED_ENTRY:
+      // deep copy
+      var obj = JSON.parse(JSON.stringify(state));
+      obj.unshift([
+        { _id: action.id, text: action.text },
+        action.tags.map(tag => {
+          return tag.tag;
+        })
+      ]);
+      return obj;
     default:
       return state;
   }
@@ -75,7 +68,6 @@ function entries(state = [], action) {
 
 const rootReducer = combineReducers({
   resources,
-  content,
   entries
 });
 
