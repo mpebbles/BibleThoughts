@@ -24,7 +24,7 @@
 #entries {
   width: 50%;
   position: fixed;
-  top: 140px;
+  top: 160px;
   left: 10px;
   background:rgba(100,100,100,0.7);
   padding: 3%;
@@ -39,6 +39,7 @@
   margin-right: -70px; /* maximum width of scrollbar */
   padding-right: 70px; /* maximum width of scrollbar */
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .left-heading {
