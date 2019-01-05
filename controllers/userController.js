@@ -163,8 +163,29 @@ exports.getEntries = function(req, res, next) {
       res.sendStatus(400);
       return;
     }
-    tagDoc.find({userRef: req.session.val}).exec(function(err, tags) {
-      res.send({content: document.content, tags: tags});
+    tagDoc.find({ userRef: req.session.val }).exec(function(err, tags) {
+      res.send({ content: document.content, tags: tags });
     });
   });
 };
+
+exports.deleteEntry = [
+  (req, res, next) => {
+    user
+      .findOneAndUpdate(
+        { _id: req.session.val },
+        { $pull: { content: { _id: req.body.id } } }
+      )
+      .exec(function(err, document) {
+        if (!document) {
+          res.sendStatus(400);
+          return;
+        }
+      });
+    tagDoc
+      .deleteMany({ contentRef: req.body.id })
+      .exec(function(err, document) {
+        res.sendStatus(200);
+      });
+  }
+];

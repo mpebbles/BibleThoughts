@@ -15,7 +15,8 @@ class Entry extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showFull: false
+      showFull: false,
+      showDelete: false
     };
   }
 
@@ -76,7 +77,9 @@ class Entry extends Component {
               color="white"
               style={{ position: "absolute", top: "10px", right: "10px" }}
               onClick={e => {
-                this.setState({ showFull: !this.state.showFull });
+                if (this.state.showFull)
+                  this.setState({ showFull: false, showDelete: false });
+                else this.setState({ showFull: true, showDelete: true });
               }}
             />
             <div
@@ -87,25 +90,53 @@ class Entry extends Component {
                 marginRight: "-100px" /* maximum width of scrollbar */,
                 paddingRight: "100px" /* maximum width of scrollbar */,
                 overflowY: "scroll",
-                float: "left"
+                float: "left",
+                textAlign: "left"
               }}
             >
               {this.props.content}
               <div
-                style={{
-                  paddingBottom: "5%",
-                  display: "inline",
-                  marginLeft: "1px"
-                }}
+                style={{ height: "10%", position: "relative", padding: "2%" }}
               >
-                {this.props.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="badge badge-primary pill-link-wrapper"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                <div
+                  style={{
+                    display: "inline",
+                    marginLeft: "1px"
+                  }}
+                >
+                  {this.props.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="badge badge-primary pill-link-wrapper"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+
+                  <div style={{ width: "100%", float: "left", padding: "5%" }}>
+                    {!this.state.showDelete ? (
+                      <FontAwesomeIcon
+                        className="no-background-btn"
+                        icon="ellipsis-h"
+                        size="1x"
+                        title="show more"
+                        color="white"
+                        onClick={e => {
+                          this.setState({ showDelete: !this.state.showDelete });
+                        }}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        className="no-background-btn"
+                        icon="trash"
+                        size="1x"
+                        title="delete"
+                        color="white"
+                        onClick={this.props.onDeleteClick}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -36,6 +36,7 @@ router.post("/deleteAccount", [], user.deleteAccount);
 router.post("/addResource", [], user.addResource);
 router.post("/addContent", [], user.addContent);
 router.post("/deleteResource", [], user.deleteResource);
+router.post("/deleteEntry", [], user.deleteEntry);
 router.get("/getResources", user.getResources);
 router.get("/isLoggedIn", user.isLoggedIn);
 router.get("/getEntries", user.getEntries);

@@ -9,7 +9,7 @@ const Entries = ({ entries, deleteEntry}) => (
         key={entry[0]._id}
         tags={entry[1]}
         content={entry[0].text}
-        onDeleteClick={() => deleteEntry(entry[0].id)}
+        onDeleteClick={() => deleteEntry(entry[0]._id)}
       />
     ))}
   </ul>

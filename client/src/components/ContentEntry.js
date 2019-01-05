@@ -6,6 +6,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { addContent } from "../actions/actions";
+import "../css/bootstrap.min.css";
 library.add(fas);
 
 let createHandler = function(dispatch) {

@@ -50,9 +50,13 @@ function entries(state = [], action) {
     case REQUEST_ENTRIES:
       return state;
     case DELETE_ENTRY:
-      return state;
-    case ADDED_ENTRY:
       // deep copy
+      var obj = JSON.parse(JSON.stringify(state));
+      return obj.filter(el => {
+        return el[0]._id !== action.id;
+      });
+
+    case ADDED_ENTRY:
       var obj = JSON.parse(JSON.stringify(state));
       obj.unshift([
         { _id: action.id, text: action.text },

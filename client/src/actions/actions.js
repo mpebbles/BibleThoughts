@@ -128,10 +128,10 @@ export function fetchEntries() {
 }
 
 export function deleteEntry(id) {
-  //axios({
-  //  method: "post",
-  //  url: "/api/deleteResource/",
-  //  data: { link: link }
-  //}).then();
+  axios({
+    method: "post",
+    url: "/api/deleteEntry/",
+    data: { id: id }
+  }).then();
   return { type: DELETE_ENTRY, id: id };
 }
