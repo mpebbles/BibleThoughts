@@ -12,25 +12,25 @@
 }
 
 #content-entry {
-  width: 36%;
+  width: 35%;
   background:rgba(100,100,100,0.7);
   padding: 3%;
   border-radius: 15px;
   position: fixed;
   right: 10px;
-  top: 160px;
+  top: 90px;
 }
 
 #entries {
-  width: 60%;
+  width: 50%;
   position: fixed;
-  top: 160px;
+  top: 140px;
   left: 10px;
   background:rgba(100,100,100,0.7);
   padding: 3%;
   border-radius: 15px;
   z-index: 1;
-  height: 70vh;
+  height: 60vh;
   overflow: hidden;
 }
 
